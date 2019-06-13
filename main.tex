@@ -1,0 +1,92 @@
+%% Master Thesis Template (by inoue)
+%% Shinoda lab, Tokyo Institute of Technology
+%%%%%%%%%%
+%% How to make a pdf file?
+%% > platex main.tex
+%% > dvipdfmx main.dvi
+%% > mv main.pdf your_file.pdf
+%% Note: you need to install platex and dvipdfmx. -kanji=sjis option is available with platex.
+%%%%%%%%%%
+\documentclass[a4p,11pt]{jreport}
+
+%% (0) 準備
+%% (0-1) 提出年月を入力
+\def\coverdate{平成２７年２月}
+%% (0-2) 学籍番号を入力
+\def\coversid{10M00001}
+%% (0-3) 名前を入力, スペースは'\ '
+\def\covername{姓\ 名}
+%% (0-4) タイトルを入力
+\def\covertitle{
+  %% 2行に渡る場合
+  タイトル１行目
+  \vspace{7pt}\\
+  ２行目
+  %1行の場合
+  %\vspace{17pt}
+  %タイトル１行目
+  %\vspace{17pt}
+}
+
+%% (0-5) Include header info here
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\newcommand{\argmax}{\mathop{\rm argmax}\limits}
+\newcommand{\argmin}{\mathop{\rm argmin}\limits}
+\def\bold#1{\bm #1} 
+\topmargin      = 5mm   % 無指定では1inch(2.538cm)空く
+\headheight     = 0mm
+\headsep        = 0mm
+\footskip       = 15mm
+\textheight     = 235mm % A4紙,B5紙の縦はそれぞれ297mm,257mm
+\oddsidemargin  = 0mm   % 無指定では1inch(2.538cm)空く
+\evensidemargin = 0mm   % 無指定では1inch(2.538cm)空く
+\textwidth      = 160mm % A4紙,B5紙の横はそれぞれ210mm,182mm
+\marginparsep   = 0mm
+\marginparwidth = 0mm
+\unitlength     1mm     % picture環境での基本の長さ
+\pagestyle{plain}       % empty(出力なし),plain(通常出力)など
+ 
+\renewcommand{\bibname}{参考文献}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\begin{document}
+
+%%The cover page%%
+\include{cover}
+
+%%List of contents%%
+\pagenumbering{roman} 
+\tableofcontents % List of contents
+%\listoffigures   % for figures
+%\listoftables    % for tables
+%\clearpage       % a blank page
+
+%%Introduction%%
+\chapter{序章}
+\label{chap:introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1} 
+\input{introduction}
+
+
+%%序章に習って、章を追加 %%
+\chapter{XXX}
+\label{chap:xxx} 
+\input{xxx} %%xxx.texを別途要作成
+
+%\chapter*{付録}
+%\label{chap:appendix}
+%\input{appendix}
+
+%\chapter*{謝辞}
+%\input{thanks}
+
+%% Modify bibliography.tex %%
+\input{bibliography}
+
+\end{document}
